@@ -42,9 +42,14 @@ dashed_line()
 
 game_is_on = True
 while game_is_on:
-    screen.update()
     time.sleep(0.1)
+    screen.update()
     ball.move()
-    ball.edge_of_screen()
+    if abs(ball.ycor()) >= 280:
+        ball.bounce_y()
 
-screen.exitonclick()
+    if ball.distance(right_paddle) < 60 and ball.xcor() > 300:
+        print("made contact")
+        # ball.bounce_x()
+
+        screen.exitonclick()

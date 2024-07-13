@@ -12,11 +12,13 @@ screen.update()
 time.sleep(0.1)
 
 left_paddle = Paddle(-360, 0)
-right_paddle = Paddle(360, 0)
+right_paddle = Paddle(350, 0)
 
 screen.listen()
-screen.onkey(fun=left_paddle.up, key="Up")
-screen.onkey(fun=left_paddle.down, key="Down")
+screen.onkey(fun=left_paddle.up, key="w")
+screen.onkey(fun=left_paddle.down, key="s")
+screen.onkey(fun=right_paddle.up, key="Up")
+screen.onkey(fun=right_paddle.down, key="Down")
 
 
 def dashed_line():

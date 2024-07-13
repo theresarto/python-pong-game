@@ -9,24 +9,25 @@ X_EDGE = 400
 
 class Paddle(Turtle):
 
-    def __init__(self):
+    def __init__(self, x, y):
+        super().__init__()
         self.paddle = Turtle()
-        self.shape("square")
-        self.color("white", "white")
-        self.shapesize(stretch_wid=5, stretch_len=1)
-        self.penup()
-        self.goto(-X_EDGE, 0)
-        self.forward(MOVE_DISTANCE)
-
-    # def move(self):
-    #     self.paddle.forward(MOVE_DISTANCE)
+        self.paddle.shape("square")
+        self.paddle.color("white")
+        self.paddle.shapesize(stretch_wid=5, stretch_len=1)
+        self.paddle.penup()
+        self.paddle.goto(x, y)
 
     def up(self):
-        if self.paddle.ycor() + 25 + MOVE_DISTANCE <= Y_EDGE:
-            self.paddle.setheading(UP)
-            self.move()
+        if self.paddle.ycor() + MOVE_DISTANCE < 260:
+            new_y = self.paddle.ycor() + 20
+            self.paddle.goto(self.paddle.xcor(), new_y)
+        elif self.paddle.ycor() + MOVE_DISTANCE == 260:
+            self.paddle.goto(self.paddle.xcor(), self.paddle.ycor())
 
     def down(self):
-        if self.paddle.ycor() - 25 - MOVE_DISTANCE >= -Y_EDGE:
-            self.paddle.setheading(DOWN)
-            self.move()
+        if self.paddle.ycor() - MOVE_DISTANCE > -250:
+            new_y = self.paddle.ycor() - 20
+            self.paddle.goto(self.paddle.xcor(), new_y)
+        elif self.paddle.ycor() - MOVE_DISTANCE == -250:
+            self.paddle.goto(self.paddle.xcor(), self.paddle.ycor())

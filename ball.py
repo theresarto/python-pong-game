@@ -1,11 +1,7 @@
 from turtle import Turtle
+from random import randrange
 
-TO_LEFT = 135
-TO_RIGHT = 45
-Y_EDGE = 250
-x = 0
-y = 0
-
+HEADING = randrange(40, 360, 30)
 
 class Ball(Turtle):
     def __init__(self):
@@ -13,17 +9,16 @@ class Ball(Turtle):
         self.shape("circle")
         self.penup()
         self.color("orange")
-        self.x_move = 10
-        self.y_move = 10
+        self.setheading(HEADING)
 
     def move(self):
-        new_x = self.xcor() + self.x_move
-        new_y = self.ycor() + self.y_move
-        self.goto(new_x, new_y)
+        self.forward(20)
+        if abs(self.ycor()) >= 280:
+            new_heading = self.heading() * -1
+            self.setheading(new_heading)
 
-    def bounce_y(self):
-        self.y_move *= -1
+    def bounce_paddle(self):
+        self.setheading(180 - self.heading())
 
-    def bounce_x(self):
-        self.x_move *= -1
-        self.y_move *= -1
+    def edge_of_screen(self):
+        return abs(self.xcor()) >= 400

@@ -18,7 +18,7 @@ ball = Ball()
 centerline = CenterLine()
 scoreboard = ScoreBoard()
 left_score = Score(-70, 195)
-right_score = Score(70, 195)
+right_score = Score(70, 190)
 
 screen.listen()
 screen.onkeypress(fun=left_paddle.up, key="w")

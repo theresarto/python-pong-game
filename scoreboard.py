@@ -31,7 +31,6 @@ class Score(Turtle):
         self.goto(x, y)
         self.update_scoreboard()
 
-
     def update_score(self):
         self.clear()
         self.update_scoreboard()
